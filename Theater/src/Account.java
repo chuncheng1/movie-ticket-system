@@ -1,13 +1,13 @@
 /*
  * The Account class, which represents the customer and employee
  * Accounts are used to access the theater's features, such as ordering a ticket.
- * To register an account, the user needs an email. They are automatically assigned an ID after the account is created.
+ * To register an account, the user needs a password. They are automatically assigned an ID after the account is created.
  * The Account class also keeps tracks of the account's ticket orders.
  * Employees have special accounts which allow them to access movie sales records.
 */
 public class Account {
 	private int accountID;
-	private String email;
+	private String password;
 	private Ticket[] ticketOrders;
 	private int orderNum;
 	private boolean isEmployee; // determines whether the account is an admin account or not
@@ -18,7 +18,7 @@ public class Account {
             throw new IllegalArgumentException("Account ID cannot be negative");
         }
 		this.accountID = id;
-		this.email = email;
+		this.password = email;
 		this.ticketOrders = new Ticket[MAX_ORDERS];
 		this.orderNum = 0;
 		this.isEmployee = isEmployee;
@@ -29,8 +29,12 @@ public class Account {
 		return accountID;
 	}
 	
-	public String getEmail() {
-		return email;
+	public boolean verifyPassword(String enteredP) {
+		if(password.equals(enteredP)){
+			return true;
+		} else {
+			return false;
+		}
 	}
 	
 	public int getOrderNum() {
@@ -41,8 +45,8 @@ public class Account {
 		return isEmployee;
 	}
 	
-	public boolean updateEmail(String newEmail) {
-		email = newEmail;
+	public boolean updatePassword(String newPassword) {
+		password = newPassword;
 		return true;
 	}
 	

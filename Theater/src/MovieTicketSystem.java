@@ -48,7 +48,7 @@ public class MovieTicketSystem {
 		Account[] accountList = new Account[MAX_ACCOUNT_NUM];
 		Account loggedInAccount = null;
 		
-		accountList[0] = new Account (0, "admin@gmail.com", true); // Employee account
+		accountList[0] = new Account (0, "admin", true); // Employee account
 		accountCount++;
 
 		while (true) { // this is the main menu the customer will be interacting from
@@ -93,16 +93,16 @@ public class MovieTicketSystem {
 							continue;
 						}
 						
-						//reading email address
-						System.out.print("Enter Email Address: ");
+						//reading password
+						System.out.print("Create a password: ");
 						Scanner temp = new Scanner(System.in);
-						String emailaddress = temp.nextLine();
+						String password = temp.nextLine();
 						
 						//printing the new account's ID
 						int createID = accountCount;
 						System.out.print("Your account ID is: ");
 						System.out.println(createID);
-						accountList[createID] = new Account (createID,emailaddress, false); // create a customer account
+						accountList[createID] = new Account (createID, password, false); // create a customer account
 						accountCount++;
 						continue;
 					}
@@ -121,18 +121,17 @@ public class MovieTicketSystem {
 							continue;
 						}
 						
-						//reading email address
-						System.out.print("Enter Email Address: ");
+						//reading password
+						System.out.print("Enter your password: ");
 						Scanner temp2 = new Scanner(System.in);
-						String emailaddress = temp2.nextLine();
-						String validemail = accountList[customerID].getEmail();
-						if(validemail.equals(emailaddress)){
+						String password = temp2.nextLine();
+						if(accountList[customerID].verifyPassword(password)){
 							System.out.println("Succesful Login");
 							loggedInAccount = accountList[customerID];
 							continue;
 						}
 						else{
-							System.out.println("UserID or email address is incorrect");
+							System.out.println("UserID or password is incorrect");
 							continue;
 						}
 
