@@ -14,19 +14,19 @@ Ticket cost: $10.00 <br>
 Maximum account storage: 100 <br>
 Maximum ticket order per account: 3 <br>
 Employee account ID: 0 <br>
-Employee email: admin@gmail.com <br>
+Employee password: admin <br>
 <br>
 Employee  <br>
 Employees can use the following special account to access admin features. <br>
 Employee account ID: 0 <br>
-Employee email: admin@gmail.com <br>
+Employee password: admin <br>
 After logging in with this account, employees can view the ticket sales and boxoffice for each movie by pressing the number key 7. <br>
 <br>
 Customer <br>
 1. Register an account <br>
-Press the number key 1. The user will be prompted to enter their email. After the email is entered, the user will receive an account ID. Please take note of the ID you received for log in. <br>
+Press the number key 1. The user will be prompted to create a password. After a password is created, the user will receive an account ID. Please take note of the ID you received for log in. <br>
 2. Login <br>
-Press the number key 2. The user will need to enter their account ID and the email they used to register to successfully login.
+Press the number key 2. The user will need to enter their account ID and the password they used to register to successfully login.
 3. Logout <br>
 Press the number key 3. The user will be logged out.
 4. Purchase Ticket <br>
