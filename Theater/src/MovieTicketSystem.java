@@ -50,6 +50,8 @@ public class MovieTicketSystem {
 		
 		accountList[0] = new Account (0, "admin", true); // Employee account
 		accountCount++;
+		
+		Scanner scan = new Scanner(System.in);
 
 		while (true) { // this is the main menu the customer will be interacting from
 			System.out.println();
@@ -77,18 +79,19 @@ public class MovieTicketSystem {
 			}
 			
 			try {
-				Scanner input = new Scanner(System.in);
-				int choice = input.nextInt();
+				
+				int choice = scan.nextInt();
+				scan.nextLine();
 				if (choice == 0) {
 					//Quit
 					System.out.println("Thank you for using the Movie Theater. Goodbye!");
 					break;
 				} else if (choice == 1) {
 					//Register account
-					if (loggedInAccount != null){
+					if (loggedInAccount != null) {
 						System.out.println("User already logged in");
 						continue;
-					} else{
+					} else {
 						if (accountCount >= MAX_ACCOUNT_NUM) {
 							System.out.print("Sorry, the system cannot add any more account");
 							continue;
@@ -96,8 +99,7 @@ public class MovieTicketSystem {
 						
 						//reading password
 						System.out.print("Create a password: ");
-						Scanner temp = new Scanner(System.in);
-						String password = temp.nextLine();
+						String password = scan.nextLine();
 						
 						//printing the new account's ID
 						int createID = accountCount;
@@ -107,7 +109,7 @@ public class MovieTicketSystem {
 						accountCount++;
 						continue;
 					}
-				} else if (choice == 2){
+				} else if (choice == 2) {
 					//Login
 					if (loggedInAccount != null){
 						System.out.println("You are already logged in");
@@ -115,8 +117,8 @@ public class MovieTicketSystem {
 					} else{
 						//reading account ID
 						System.out.print("Enter your account ID: ");
-						Scanner temp1 = new Scanner(System.in);
-						int customerID = temp1.nextInt();
+						int customerID = scan.nextInt();
+						scan.nextLine();
 						if (customerID < 0 || customerID >= MAX_ACCOUNT_NUM || accountList[customerID] == null) {
 							System.out.println("Invalid account ID");
 							continue;
@@ -124,8 +126,7 @@ public class MovieTicketSystem {
 						
 						//reading password
 						System.out.print("Enter your password: ");
-						Scanner temp2 = new Scanner(System.in);
-						String password = temp2.nextLine();
+						String password = scan.nextLine();
 						if(accountList[customerID].verifyPassword(password)){
 							System.out.println("Succesful Login");
 							loggedInAccount = accountList[customerID];
@@ -167,8 +168,8 @@ public class MovieTicketSystem {
 							System.out.println();
 						}
 						System.out.print("Please choose a film from above (Enter numbers only): ");
-						Scanner temp3 = new Scanner(System.in);
-						int moviechoice = temp3.nextInt();
+						int moviechoice = scan.nextInt();
+						scan.nextLine();
 						if (moviechoice < 0 || moviechoice >= MOVIE_NUM) {
 							System.out.println("You have entered an invalid input");
 							continue;
@@ -178,8 +179,8 @@ public class MovieTicketSystem {
 						System.out.println();
 						theaters[moviechoice].printSchedule();
 						System.out.print("Please choose a showtime from above (Enter numbers only): ");
-						Scanner temp4 = new Scanner(System.in);
-						int showtimechoice = temp4.nextInt();
+						int showtimechoice = scan.nextInt();
+						scan.nextLine();
 						if (showtimechoice < 0 || showtimechoice >= theaters[moviechoice].getShowtimeNum()) {
 							System.out.println("You have entered an invalid input");
 							continue;
@@ -192,8 +193,8 @@ public class MovieTicketSystem {
 						theaters[moviechoice].printSeats(time);
 						System.out.println("Seats marked with X are not available");
 						System.out.print("Please choose a seat from above (Enter numbers only): ");
-						Scanner temp5 = new Scanner(System.in);
-						int seatchoice = temp5.nextInt();
+						int seatchoice = scan.nextInt();
+						scan.nextLine();
 						if (seatchoice < 0 || seatchoice >= theaters[moviechoice].getCapacity()) {
 							System.out.println("You have entered an invalid input");
 							continue;
@@ -222,8 +223,8 @@ public class MovieTicketSystem {
 						System.out.println();
 						loggedInAccount.printTickets();
 						System.out.print("Type the ID of ticket you want to cancel: ");
-						Scanner deletechoice = new Scanner(System.in);
-						choice = deletechoice.nextInt();
+						choice = scan.nextInt();
+						scan.nextLine();
 						if (choice < 0 || choice >= MAX_ORDERS) {
 							System.out.println("You have entered an invalid input");
 							continue;
@@ -248,8 +249,7 @@ public class MovieTicketSystem {
 						continue;
 					} else {
 						System.out.print("Enter new password: ");
-						Scanner temp7 = new Scanner(System.in);
-						String newPassword = temp7.nextLine();
+						String newPassword = scan.nextLine();
 						loggedInAccount.updatePassword(newPassword);
 						System.out.println("Password changed successfully.");
 						continue;
@@ -265,8 +265,8 @@ public class MovieTicketSystem {
 					
 					//reading movie choice
 					System.out.print("Please choose a film from above (Enter numbers only): ");
-					Scanner temp8 = new Scanner(System.in);
-					int moviechoice = temp8.nextInt();
+					int moviechoice = scan.nextInt();
+					scan.nextLine();
 					if (moviechoice < 0 || moviechoice >= MOVIE_NUM) {
 						System.out.println("You have entered an invalid input");
 						continue;
@@ -287,9 +287,9 @@ public class MovieTicketSystem {
 				System.out.println("You have entered an invalid input");
 				continue;
 			}
-
+			
 		}
-
+		scan.close();
 	}
 
 }
