@@ -62,8 +62,9 @@ public class MovieTicketSystem {
 			System.out.println("(4) Purchase Ticket");
 			System.out.println("(5) Cancel Ticket Order");
 			System.out.println("(6) Print Your Ticket Orders");
+			System.out.println("(7) Change password");
 			if (loggedInAccount != null && loggedInAccount.getIsEmployee()) {
-				System.out.println("(7) Access Movie Sales (Employee Only)");
+				System.out.println("(8) Access Movie Sales (Employee Only)");
 			}
 			System.out.println("(0) Quit");
 			
@@ -241,7 +242,19 @@ public class MovieTicketSystem {
 						loggedInAccount.printTickets();
 						continue;
 					}
-				} else if (choice == 7 && loggedInAccount != null && loggedInAccount.getIsEmployee()) {
+				} else if (choice == 7) {
+					if (loggedInAccount == null) {
+						System.out.println("You are not logged in. Please log in first.");
+						continue;
+					} else {
+						System.out.print("Enter new password: ");
+						Scanner temp7 = new Scanner(System.in);
+						String newPassword = temp7.nextLine();
+						loggedInAccount.updatePassword(newPassword);
+						System.out.println("Password changed successfully.");
+						continue;
+					}
+				} else if (choice == 8 && loggedInAccount != null && loggedInAccount.getIsEmployee()) {
 					//Access movie sales
 					System.out.println();
 					for (int i = 0; i < MOVIE_NUM; i++) {
@@ -252,8 +265,8 @@ public class MovieTicketSystem {
 					
 					//reading movie choice
 					System.out.print("Please choose a film from above (Enter numbers only): ");
-					Scanner temp7 = new Scanner(System.in);
-					int moviechoice = temp7.nextInt();
+					Scanner temp8 = new Scanner(System.in);
+					int moviechoice = temp8.nextInt();
 					if (moviechoice < 0 || moviechoice >= MOVIE_NUM) {
 						System.out.println("You have entered an invalid input");
 						continue;
