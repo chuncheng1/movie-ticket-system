@@ -1,4 +1,6 @@
-/*
+/* 
+ * Collaborators: Chun Cheng, Yingjie Ouyang, Sam Unger, Melissa Zhen
+ * 
  * The main class, which represents the MovieTicketSystem that users will interact with
  * The program is run from here. 
  */
