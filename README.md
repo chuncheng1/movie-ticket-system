@@ -1,4 +1,5 @@
 # movie-ticket-system
+Collaborators: Chun Cheng, Yingjie Ouyang, Sam Unger, Melissa Zhen <br>
 
 **User Manual** <br>
 System Constraint: <br>
